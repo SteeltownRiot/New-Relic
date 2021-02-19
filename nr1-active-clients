@@ -1,4 +1,16 @@
--- A simple nested query to separate onboarded clients from those actively using an app
+/*	About
+    NR1 Active Client Query 
+    Version: 1.0
+    Last Modified: 2021-02-19
+    Last Modified by: John Hopson
+                      johnchopson17@gmail.com
+    Created: 2021-02-19
+    Create by: John Hopson
+	       johnchopson17@gmail.com
+    Note: --
+    Description: A simple nested query to separate onboarded clients from those actively using an app
+*/
+
 SELECT	uniqueCount(clientId) AS 'Active Clients'
 FROM	(
 	SELECT	count(*) as 'countedTransactions'
