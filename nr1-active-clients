@@ -1,0 +1,12 @@
+-- A simple nested query to separate onboarded clients from those actively using an app
+SELECT	uniqueCount(clientId) AS 'Active Clients'
+FROM	(
+	SELECT	count(*) as 'countedTransactions'
+	FROM	Transaction
+	WHERE	appName = 'clientApp'
+	FACET	clientId
+	LIMIT	MAX
+	)
+WHERE	countedTransactions > 1000
+SINCE	last month
+UNTIL	this month
